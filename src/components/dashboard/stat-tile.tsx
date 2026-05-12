@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { LucideIcon, TrendingUp, TrendingDown } from "lucide-react";
+import { TrendingUp, TrendingDown } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { formatCompact, cn } from "@/lib/utils";
 
@@ -34,16 +34,20 @@ function useCountUp(target: number, duration = 900) {
   return value;
 }
 
+// IMPORTANT: `icon` is a ReactNode (JSX element), not a component reference.
+// Server Components can't pass function/forwardRef refs to a Client Component
+// as props — they're not serializable across the RSC boundary. Callers must
+// render the icon JSX themselves: <StatTile icon={<Zap className="..." />} />
 export function StatTile({
   label,
   value,
-  icon: Icon,
+  icon,
   hint,
   delta,
 }: {
   label: string;
   value: number | string;
-  icon: LucideIcon;
+  icon: React.ReactNode;
   hint?: string;
   delta?: string;
 }) {
@@ -58,8 +62,8 @@ export function StatTile({
     <Card className="relative overflow-hidden p-5 surface-hover">
       <div className="flex items-start justify-between">
         <div className="text-[11px] tracking-[0.12em] uppercase text-muted-foreground">{label}</div>
-        <div className="h-7 w-7 rounded-lg border border-white/10 bg-white/[0.04] inline-flex items-center justify-center">
-          <Icon className="h-3.5 w-3.5 text-muted-foreground" />
+        <div className="h-7 w-7 rounded-lg border border-white/10 bg-white/[0.04] inline-flex items-center justify-center text-muted-foreground [&_svg]:h-3.5 [&_svg]:w-3.5">
+          {icon}
         </div>
       </div>
       <div className="mt-4 flex items-baseline gap-2">

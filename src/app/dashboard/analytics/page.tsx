@@ -50,10 +50,10 @@ export default async function AnalyticsPage() {
       />
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatTile label="Total triggers" value={(keywordRows?.length || 0) * 1.04 | 0} icon={MessageSquare} />
-        <StatTile label="DMs delivered" value={keywordRows?.length || 0} icon={Send} delta="+18%" />
-        <StatTile label="Follower lift" value={"+2,318"} icon={Users} delta="+4.2%" />
-        <StatTile label="DM conversion" value={"97.6%"} icon={TrendingUp} delta="+0.8pt" />
+        <StatTile label="Total triggers" value={(keywordRows?.length || 0) * 1.04 | 0} icon={<MessageSquare />} />
+        <StatTile label="DMs delivered" value={keywordRows?.length || 0} icon={<Send />} delta="+18%" />
+        <StatTile label="Follower lift" value={"+2,318"} icon={<Users />} delta="+4.2%" />
+        <StatTile label="DM conversion" value={"97.6%"} icon={<TrendingUp />} delta="+0.8pt" />
       </div>
 
       <Card>

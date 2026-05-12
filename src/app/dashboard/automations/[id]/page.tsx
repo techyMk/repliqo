@@ -59,9 +59,9 @@ export default async function AutomationDetailPage({
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatTile label="Triggers" value={automation.triggers_count} icon={MessageSquare} />
-        <StatTile label="Replies sent" value={automation.replies_sent_count} icon={Zap} />
-        <StatTile label="DMs sent" value={automation.dms_sent_count} icon={Send} />
+        <StatTile label="Triggers" value={automation.triggers_count} icon={<MessageSquare />} />
+        <StatTile label="Replies sent" value={automation.replies_sent_count} icon={<Zap />} />
+        <StatTile label="DMs sent" value={automation.dms_sent_count} icon={<Send />} />
         <StatTile
           label="Conversion"
           value={
@@ -69,7 +69,7 @@ export default async function AutomationDetailPage({
               ? `${((automation.dms_sent_count / automation.triggers_count) * 100).toFixed(1)}%`
               : "—"
           }
-          icon={TrendingUp}
+          icon={<TrendingUp />}
         />
       </div>
 

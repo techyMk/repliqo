@@ -104,25 +104,25 @@ export default async function DashboardOverviewPage() {
         <StatTile
           label="Active automations"
           value={activeAutomations ?? 0}
-          icon={Zap}
+          icon={<Zap />}
           hint="across all accounts"
         />
         <StatTile
           label="DMs sent · 7d"
           value={dmsSent7d ?? 0}
-          icon={MessageSquare}
+          icon={<MessageSquare />}
           delta="+12.4%"
         />
         <StatTile
           label="Triggers · 7d"
           value={triggers7d ?? 0}
-          icon={Activity}
+          icon={<Activity />}
           delta="+8.7%"
         />
         <StatTile
           label="DM conversion"
           value={`${conversionRate.toFixed(1)}%`}
-          icon={TrendingUp}
+          icon={<TrendingUp />}
           delta="+1.2pt"
         />
       </div>

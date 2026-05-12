@@ -34,7 +34,7 @@ export function MarketingNav() {
           : "border-b border-transparent bg-transparent"
       )}
     >
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-[72px] items-center justify-between">
         <Link href="/" className="flex items-center -ml-1">
           <Logo />
         </Link>

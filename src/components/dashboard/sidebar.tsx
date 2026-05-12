@@ -45,7 +45,7 @@ export function Sidebar({
         className
       )}
     >
-      <div className="h-16 flex items-center px-5 border-b border-white/[0.06]">
+      <div className="h-[72px] flex items-center px-5 border-b border-white/[0.06]">
         <Link href="/dashboard" className="inline-flex items-center" onClick={onNavigate}>
           <Logo />
         </Link>
@@ -128,7 +128,7 @@ export function Sidebar({
         <div className="relative rounded-2xl border border-white/[0.1] bg-gradient-to-b from-white/[0.05] to-transparent p-4 overflow-hidden">
           {/* Brand icon as a subtle corner watermark */}
           <LogoMark
-            className="absolute -right-2 -top-2 h-14 w-14 opacity-25 pointer-events-none"
+            className="absolute -right-3 -top-3 h-20 w-20 opacity-25 pointer-events-none"
             aria-hidden
           />
           <div className="relative flex items-center gap-1.5 text-[10px] tracking-[0.18em] uppercase text-foreground/80">

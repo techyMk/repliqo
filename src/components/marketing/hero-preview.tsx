@@ -20,7 +20,7 @@ export function HeroPreview() {
               <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
               <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
             </div>
-            <Logo showWordmark={false} className="opacity-70" />
+            <Logo showWordmark={false} className="h-6 w-6 opacity-70" />
             <div className="text-[11px] text-muted-foreground tabular-nums">
               app.repliqo.io
             </div>

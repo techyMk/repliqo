@@ -17,7 +17,7 @@ export function FinalCTA() {
       <div className="container">
         <div className="relative max-w-4xl mx-auto rounded-[2.5rem] border border-white/[0.1] bg-gradient-to-b from-white/[0.07] via-white/[0.02] to-transparent p-10 md:p-20 text-center glow-ring">
           <div className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.04] px-3 py-1 text-[11px] tracking-wider text-foreground/85">
-            <LogoMark className="h-3.5 w-3.5" aria-hidden />
+            <LogoMark className="h-4 w-4" aria-hidden />
             <span>Live in under 5 minutes</span>
           </div>
 

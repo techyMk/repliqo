@@ -41,8 +41,8 @@ export function DashboardEmptyState() {
 
       <div className="w-full max-w-3xl">
         <div className="text-center">
-          <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] mb-6 glow-ring">
-            <LogoMark className="h-10 w-10" />
+          <div className="inline-flex h-24 w-24 items-center justify-center rounded-3xl border border-white/10 bg-white/[0.03] mb-7 glow-ring">
+            <LogoMark className="h-16 w-16" />
           </div>
           <h2 className="text-display-sm font-semibold gradient-text text-balance">
             Welcome to

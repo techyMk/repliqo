@@ -34,7 +34,7 @@ export function Hero() {
         >
           <Link href="#how" className="inline-block group">
             <Badge variant="outline" className="gap-1.5 rounded-full px-3 py-1 hover:bg-white/[0.05] transition-colors">
-              <LogoMark className="h-3.5 w-3.5" aria-hidden />
+              <LogoMark className="h-4 w-4" aria-hidden />
               <span className="text-[11px] tracking-wider">Now on the Instagram Login flow</span>
               <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
             </Badge>

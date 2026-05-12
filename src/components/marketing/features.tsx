@@ -57,34 +57,41 @@ const features = [
 
 export function Features() {
   return (
-    <section id="features" className="py-24 md:py-32 border-b border-white/[0.05]">
+    <section id="features" className="py-28 md:py-36 border-b border-white/[0.05] relative">
       <div className="container">
         <div className="max-w-2xl">
-          <p className="text-xs tracking-widest uppercase text-muted-foreground">Features</p>
-          <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-balance gradient-text">
-            Everything you need to ship Instagram automations.
+          <p className="text-[11px] tracking-[0.2em] uppercase text-muted-foreground">— Features</p>
+          <h2 className="mt-4 text-display-sm gradient-text font-semibold text-balance">
+            Everything you need to ship
+            <span className="font-display italic font-normal"> Instagram </span>
+            automations.
           </h2>
-          <p className="mt-4 text-muted-foreground text-balance">
+          <p className="mt-5 text-muted-foreground text-balance leading-relaxed">
             Built for creators selling drops, course creators capturing leads, and agencies running
             dozens of accounts at once.
           </p>
         </div>
 
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.05] rounded-2xl overflow-hidden border border-white/[0.08]">
+        <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.06] rounded-2xl overflow-hidden border border-white/[0.08]">
           {features.map((f, i) => (
             <motion.div
               key={f.title}
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.4, delay: i * 0.04 }}
-              className="group bg-[#0a0a0a] p-6 hover:bg-[#0d0d0d] transition-colors"
+              transition={{ duration: 0.45, delay: i * 0.04 }}
+              className="group relative bg-background p-7 hover:bg-white/[0.02] transition-colors"
             >
-              <div className="h-10 w-10 rounded-xl border border-white/10 bg-white/[0.04] inline-flex items-center justify-center mb-5 group-hover:bg-white/[0.08] transition-colors">
-                <f.icon className="h-4 w-4" />
+              <div className="flex items-center justify-between mb-7">
+                <div className="h-9 w-9 rounded-xl border border-white/10 bg-white/[0.04] inline-flex items-center justify-center group-hover:bg-white/[0.08] group-hover:border-white/20 transition-all">
+                  <f.icon className="h-4 w-4" />
+                </div>
+                <span className="text-[10px] tabular-nums tracking-widest text-muted-foreground/60">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
               </div>
-              <h3 className="text-sm font-semibold tracking-tight">{f.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+              <h3 className="text-[15px] font-semibold tracking-tight">{f.title}</h3>
+              <p className="mt-2 text-[13px] text-muted-foreground leading-relaxed">
                 {f.body}
               </p>
             </motion.div>

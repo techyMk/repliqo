@@ -35,12 +35,13 @@ const faqs = [
 export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="faq" className="py-24 md:py-32 border-b border-white/[0.05]">
+    <section id="faq" className="py-28 md:py-36 border-b border-white/[0.05]">
       <div className="container max-w-3xl">
         <div className="text-center">
-          <p className="text-xs tracking-widest uppercase text-muted-foreground">FAQ</p>
-          <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-balance gradient-text">
-            Questions, answered.
+          <p className="text-[11px] tracking-[0.2em] uppercase text-muted-foreground">— FAQ</p>
+          <h2 className="mt-4 text-display-sm gradient-text font-semibold text-balance">
+            Questions,
+            <span className="font-display italic font-normal"> answered.</span>
           </h2>
         </div>
 

@@ -2,31 +2,40 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 export function FinalCTA() {
   return (
-    <section className="py-24 md:py-32 border-b border-white/[0.05] relative overflow-hidden">
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 bg-line-grid mask-radial opacity-30"
-      />
+    <section className="py-28 md:py-40 border-b border-white/[0.05] relative overflow-hidden">
+      {/* Aurora behind the CTA card for atmospheric depth */}
+      <div aria-hidden className="absolute inset-0 -z-10 flex items-center justify-center">
+        <div className="aurora h-[700px] w-[700px] animate-aurora-rotate opacity-50" />
+      </div>
+      <div aria-hidden className="absolute inset-0 -z-10 bg-line-grid mask-radial opacity-25" />
+
       <div className="container">
-        <div className="relative max-w-4xl mx-auto rounded-[2rem] border border-white/[0.1] bg-gradient-to-b from-white/[0.06] to-transparent p-10 md:p-16 text-center glow-ring">
-          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-balance gradient-text">
-            Reply once. Automate forever.
+        <div className="relative max-w-4xl mx-auto rounded-[2.5rem] border border-white/[0.1] bg-gradient-to-b from-white/[0.07] via-white/[0.02] to-transparent p-10 md:p-20 text-center glow-ring">
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.04] px-3 py-1 text-[11px] tracking-wider text-foreground/85">
+            <Sparkles className="h-3 w-3" />
+            <span>Live in under 5 minutes</span>
+          </div>
+
+          <h2 className="mt-7 text-display-sm gradient-text font-semibold text-balance">
+            Reply once.
+            <span className="font-display italic font-normal"> Automate </span>
+            forever.
           </h2>
-          <p className="mt-4 text-muted-foreground text-balance max-w-xl mx-auto">
-            Join 12,000+ creators automating their Instagram inbox. Live in under 5 minutes.
+          <p className="mt-5 text-muted-foreground text-balance max-w-xl mx-auto leading-relaxed">
+            Join 12,000+ creators automating their Instagram inbox. Free forever on the starter plan — no credit card.
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Button asChild size="lg">
+          <div className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-2.5">
+            <Button asChild size="lg" className="min-w-[160px]">
               <Link href="/signup">
                 Start free
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="secondary">
+            <Button asChild size="lg" variant="secondary" className="min-w-[160px]">
               <Link href="#pricing">See pricing</Link>
             </Button>
           </div>

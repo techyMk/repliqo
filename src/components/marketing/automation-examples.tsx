@@ -29,12 +29,14 @@ const examples = [
 
 export function AutomationExamples() {
   return (
-    <section className="py-24 md:py-32 border-b border-white/[0.05]">
+    <section className="py-28 md:py-36 border-b border-white/[0.05]">
       <div className="container">
         <div className="max-w-2xl">
-          <p className="text-xs tracking-widest uppercase text-muted-foreground">Use cases</p>
-          <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-balance gradient-text">
-            Built for the way creators actually sell.
+          <p className="text-[11px] tracking-[0.2em] uppercase text-muted-foreground">— Use cases</p>
+          <h2 className="mt-4 text-display-sm gradient-text font-semibold text-balance">
+            Built for the way creators
+            <span className="font-display italic font-normal"> actually </span>
+            sell.
           </h2>
         </div>
 

@@ -27,12 +27,14 @@ const quotes = [
 
 export function Testimonials() {
   return (
-    <section className="py-24 md:py-32 border-b border-white/[0.05]">
+    <section className="py-28 md:py-36 border-b border-white/[0.05]">
       <div className="container">
         <div className="max-w-2xl">
-          <p className="text-xs tracking-widest uppercase text-muted-foreground">Testimonials</p>
-          <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-balance gradient-text">
-            Built for serious sellers.
+          <p className="text-[11px] tracking-[0.2em] uppercase text-muted-foreground">— Testimonials</p>
+          <h2 className="mt-4 text-display-sm gradient-text font-semibold text-balance">
+            Built for
+            <span className="font-display italic font-normal"> serious </span>
+            sellers.
           </h2>
         </div>
 

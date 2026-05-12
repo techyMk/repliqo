@@ -1,6 +1,30 @@
 import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
+
+// Geist Sans for UI/body, Geist Mono for code, Instrument Serif for the
+// occasional display accent (hero headline, page titles). All loaded
+// self-hosted via next/font — zero FOUT, zero external requests at runtime.
+const geistSans = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist-sans",
+  display: "swap",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -32,8 +56,12 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
-      <body className="min-h-screen bg-background font-sans">
+    <html
+      lang="en"
+      className={`dark ${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable}`}
+      suppressHydrationWarning
+    >
+      <body className="min-h-screen bg-background font-sans antialiased">
         <Providers>{children}</Providers>
       </body>
     </html>

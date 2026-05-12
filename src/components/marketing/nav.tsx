@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/brand/logo";
 import { Button } from "@/components/ui/button";
@@ -16,24 +16,40 @@ const links = [
 
 export function MarketingNav() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 inset-x-0 z-50 border-b border-white/[0.05] bg-background/70 backdrop-blur-xl">
+    <header
+      className={cn(
+        "fixed top-0 inset-x-0 z-50 transition-all duration-300",
+        scrolled
+          ? "border-b border-white/[0.06] bg-background/75 backdrop-blur-xl"
+          : "border-b border-transparent bg-transparent"
+      )}
+    >
       <div className="container flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center -ml-1">
           <Logo />
         </Link>
-        <nav className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
+        <nav className="hidden md:flex items-center gap-1 text-[13px] text-muted-foreground">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="hover:text-foreground transition-colors"
+              className="px-3 py-1.5 rounded-full hover:text-foreground hover:bg-white/[0.04] transition-colors"
             >
               {l.label}
             </Link>
           ))}
         </nav>
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-1.5">
           <Button asChild variant="ghost" size="sm">
             <Link href="/login">Sign in</Link>
           </Button>
@@ -51,8 +67,8 @@ export function MarketingNav() {
       </div>
       <div
         className={cn(
-          "md:hidden border-t border-white/[0.05] overflow-hidden transition-[max-height] duration-300",
-          open ? "max-h-96" : "max-h-0"
+          "md:hidden border-t border-white/[0.05] overflow-hidden transition-[max-height,opacity] duration-300",
+          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         )}
       >
         <div className="container py-4 flex flex-col gap-3">

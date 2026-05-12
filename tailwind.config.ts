@@ -16,8 +16,13 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "monospace"],
+        sans: ["var(--font-geist-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        mono: ["var(--font-geist-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
+        serif: ["var(--font-serif)", "Cambria", "Georgia", "serif"],
+      },
+      letterSpacing: {
+        tightest: "-0.04em",
+        tighter2: "-0.025em",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -82,6 +87,14 @@ const config: Config = {
           "0%,100%": { opacity: "1" },
           "50%": { opacity: "0.6" },
         },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        "aurora-rotate": {
+          "0%,100%": { transform: "rotate(0deg)" },
+          "50%": { transform: "rotate(180deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -89,6 +102,8 @@ const config: Config = {
         shimmer: "shimmer 2s linear infinite",
         "fade-in": "fade-in 0.5s ease-out forwards",
         "pulse-soft": "pulse-soft 2.5s ease-in-out infinite",
+        marquee: "marquee 40s linear infinite",
+        "aurora-rotate": "aurora-rotate 24s ease-in-out infinite",
       },
       backgroundImage: {
         "grid-fade":

@@ -40,6 +40,14 @@ yarn-error.log*
 .idea/
 .vscode/
 
+# AI coding tools — local sessions, settings, scratch files
+.claude/
+.claude.json
+.aider*
+.cursor/
+.continue/
+.windsurf/
+
 # os
 Thumbs.db
 

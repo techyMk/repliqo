@@ -8,6 +8,7 @@ import { Check, Instagram, Sparkles, Zap, ArrowRight, X } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { LogoMark } from "@/components/brand/logo";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 
@@ -81,7 +82,7 @@ export function OnboardingCard({
           <div className="flex items-start justify-between gap-4">
             <div>
               <Badge variant="outline" className="gap-1.5 rounded-full">
-                <Sparkles className="h-3 w-3" /> Get started
+                <LogoMark className="h-3.5 w-3.5" aria-hidden /> Get started
               </Badge>
               <h2 className="mt-3 text-xl font-semibold tracking-tight">
                 Welcome to Repliqo

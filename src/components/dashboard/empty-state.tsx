@@ -4,9 +4,10 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { ArrowRight, Sparkles, Zap, Loader2, Instagram } from "lucide-react";
+import { ArrowRight, Sparkles, Loader2, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { LogoMark } from "@/components/brand/logo";
 
 // Two-track empty state: a recruiter / portfolio viewer can seed demo data
 // in one click. A real user can connect their Instagram via OAuth.
@@ -40,8 +41,8 @@ export function DashboardEmptyState() {
 
       <div className="w-full max-w-3xl">
         <div className="text-center">
-          <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] mb-6 glow-ring">
-            <Zap className="h-5 w-5" />
+          <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] mb-6 glow-ring">
+            <LogoMark className="h-10 w-10" />
           </div>
           <h2 className="text-display-sm font-semibold gradient-text text-balance">
             Welcome to

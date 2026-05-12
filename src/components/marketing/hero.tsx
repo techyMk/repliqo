@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, MessageSquare, Sparkles, Zap } from "lucide-react";
+import { ArrowRight, MessageSquare, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { LogoMark } from "@/components/brand/logo";
 import { HeroPreview } from "./hero-preview";
 
 export function Hero() {
@@ -33,7 +34,7 @@ export function Hero() {
         >
           <Link href="#how" className="inline-block group">
             <Badge variant="outline" className="gap-1.5 rounded-full px-3 py-1 hover:bg-white/[0.05] transition-colors">
-              <Sparkles className="h-3 w-3" />
+              <LogoMark className="h-3.5 w-3.5" aria-hidden />
               <span className="text-[11px] tracking-wider">Now on the Instagram Login flow</span>
               <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
             </Badge>

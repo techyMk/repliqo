@@ -11,9 +11,8 @@ import {
   PlugZap,
   Instagram,
   Plus,
-  Sparkles,
 } from "lucide-react";
-import { Logo } from "@/components/brand/logo";
+import { Logo, LogoMark } from "@/components/brand/logo";
 import { cn } from "@/lib/utils";
 
 const nav = [
@@ -127,8 +126,12 @@ export function Sidebar({
 
       <div className="p-3 border-t border-white/[0.06]">
         <div className="relative rounded-2xl border border-white/[0.1] bg-gradient-to-b from-white/[0.05] to-transparent p-4 overflow-hidden">
-          <div className="flex items-center gap-1.5 text-[10px] tracking-[0.18em] uppercase text-foreground/80">
-            <Sparkles className="h-3 w-3" />
+          {/* Brand icon as a subtle corner watermark */}
+          <LogoMark
+            className="absolute -right-2 -top-2 h-14 w-14 opacity-25 pointer-events-none"
+            aria-hidden
+          />
+          <div className="relative flex items-center gap-1.5 text-[10px] tracking-[0.18em] uppercase text-foreground/80">
             Free plan
           </div>
           <div className="mt-3 text-[13px] text-foreground/85 leading-tight">

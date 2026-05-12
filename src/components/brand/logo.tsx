@@ -22,7 +22,7 @@ export function Logo({
   iconClassName?: string;
 }) {
   if (!showWordmark) {
-    return <LogoMark className={cn("h-9 w-9", iconClassName, className)} {...rest} />;
+    return <LogoMark className={cn("h-11 w-11", iconClassName, className)} {...rest} />;
   }
   return (
     <Image
@@ -31,7 +31,7 @@ export function Logo({
       width={420}
       height={180}
       priority
-      className={cn("h-9 w-auto select-none", className)}
+      className={cn("h-11 w-auto select-none", className)}
       {...rest}
     />
   );
@@ -45,7 +45,7 @@ export function LogoMark({ className, ...rest }: CommonProps) {
       width={120}
       height={120}
       priority
-      className={cn("h-9 w-9 select-none", className)}
+      className={cn("h-11 w-11 select-none", className)}
       {...rest}
     />
   );

@@ -33,7 +33,7 @@ export function Testimonials() {
           <p className="text-[11px] tracking-[0.2em] uppercase text-muted-foreground">— Testimonials</p>
           <h2 className="mt-4 text-display-sm gradient-text font-semibold text-balance">
             Built for
-            <span className="font-display italic font-normal"> serious </span>
+            <span className="font-display italic font-normal text-brand-gradient"> serious </span>
             sellers.
           </h2>
         </div>

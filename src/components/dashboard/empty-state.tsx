@@ -41,12 +41,12 @@ export function DashboardEmptyState() {
 
       <div className="w-full max-w-3xl">
         <div className="text-center">
-          <div className="inline-flex h-24 w-24 items-center justify-center rounded-3xl border border-white/10 bg-white/[0.03] mb-7 glow-ring">
-            <LogoMark className="h-16 w-16" />
+          <div className="inline-flex h-28 w-28 items-center justify-center rounded-3xl border border-white/10 bg-white/[0.03] mb-7 glow-ring">
+            <LogoMark className="h-20 w-20" />
           </div>
           <h2 className="text-display-sm font-semibold gradient-text text-balance">
             Welcome to
-            <span className="font-display italic font-normal"> Repliqo</span>
+            <span className="font-display italic font-normal text-brand-gradient"> Repliqo</span>
           </h2>
           <p className="mt-3 text-[13px] text-muted-foreground max-w-md mx-auto leading-relaxed">
             Pick a path below. Either way you'll be inside the product in a few

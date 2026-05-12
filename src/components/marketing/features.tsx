@@ -63,7 +63,7 @@ export function Features() {
           <p className="text-[11px] tracking-[0.2em] uppercase text-muted-foreground">— Features</p>
           <h2 className="mt-4 text-display-sm gradient-text font-semibold text-balance">
             Everything you need to ship
-            <span className="font-display italic font-normal"> Instagram </span>
+            <span className="font-display italic font-normal text-brand-gradient"> Instagram </span>
             automations.
           </h2>
           <p className="mt-5 text-muted-foreground text-balance leading-relaxed">

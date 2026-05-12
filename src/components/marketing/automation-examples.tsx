@@ -35,7 +35,7 @@ export function AutomationExamples() {
           <p className="text-[11px] tracking-[0.2em] uppercase text-muted-foreground">— Use cases</p>
           <h2 className="mt-4 text-display-sm gradient-text font-semibold text-balance">
             Built for the way creators
-            <span className="font-display italic font-normal"> actually </span>
+            <span className="font-display italic font-normal text-brand-gradient"> actually </span>
             sell.
           </h2>
         </div>

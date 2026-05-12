@@ -105,7 +105,7 @@ export function OnboardingCard({
           <div className="mt-5 flex items-center gap-3">
             <div className="flex-1 h-1 rounded-full bg-white/[0.06] overflow-hidden">
               <motion.div
-                className="h-full bg-white"
+                className="h-full bg-gradient-to-r from-[hsl(var(--brand-pink))] via-[hsl(var(--brand-purple))] to-[hsl(var(--brand-blue))] shadow-[0_0_12px_hsl(var(--brand-purple)/0.5)]"
                 initial={{ width: 0 }}
                 animate={{ width: `${pct}%` }}
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}

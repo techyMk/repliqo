@@ -27,8 +27,8 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       <div className="hidden lg:flex relative bg-[#0a0a0a] border-l border-white/[0.06] items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-line-grid mask-radial opacity-50" />
         <div className="relative max-w-md text-center px-10 z-10">
-          <div className="inline-flex h-20 w-20 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] mb-7 glow-ring">
-            <Logo showWordmark={false} className="h-12 w-12" />
+          <div className="inline-flex h-24 w-24 items-center justify-center rounded-3xl border border-white/10 bg-white/[0.04] mb-7 glow-ring">
+            <Logo showWordmark={false} className="h-16 w-16" />
           </div>
           <blockquote className="text-2xl font-medium tracking-tight gradient-text text-balance leading-snug">
             "Repliqo replaced three full-time DM responders. The ROI was obvious within a week."

@@ -41,7 +41,7 @@ export function FAQ() {
           <p className="text-[11px] tracking-[0.2em] uppercase text-muted-foreground">— FAQ</p>
           <h2 className="mt-4 text-display-sm gradient-text font-semibold text-balance">
             Questions,
-            <span className="font-display italic font-normal"> answered.</span>
+            <span className="font-display italic font-normal text-brand-gradient"> answered.</span>
           </h2>
         </div>
 

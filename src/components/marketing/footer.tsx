@@ -40,7 +40,21 @@ export function MarketingFooter() {
         </div>
         <div className="mt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-[11px] text-muted-foreground">
           <span>© {new Date().getFullYear()} Repliqo, Inc. All rights reserved.</span>
-          <span>Built on the official Instagram API · Not affiliated with Meta.</span>
+          <span className="hidden md:inline">Built on the official Instagram API · Not affiliated with Meta.</span>
+          <span>
+            Designed &amp; developed by{" "}
+            <a
+              href="https://techymk.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-brand-gradient hover:underline underline-offset-4"
+            >
+              techyMk
+            </a>
+          </span>
+        </div>
+        <div className="md:hidden mt-2 text-[11px] text-muted-foreground">
+          Built on the official Instagram API · Not affiliated with Meta.
         </div>
       </div>
     </footer>

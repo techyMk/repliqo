@@ -33,7 +33,7 @@ export function HowItWorks() {
           <p className="text-[11px] tracking-[0.2em] uppercase text-muted-foreground">— How it works</p>
           <h2 className="mt-4 text-display-sm gradient-text font-semibold text-balance">
             Live in
-            <span className="font-display italic font-normal"> three </span>
+            <span className="font-display italic font-normal text-brand-gradient"> three </span>
             steps.
           </h2>
         </div>

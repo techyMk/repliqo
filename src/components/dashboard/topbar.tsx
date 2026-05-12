@@ -43,7 +43,7 @@ export function Topbar({
 
   return (
     <header className="sticky top-0 z-30 border-b border-white/[0.06] bg-background/75 backdrop-blur-xl">
-      <div className="container h-[72px] flex items-center gap-3">
+      <div className="container h-20 flex items-center gap-3">
         <button
           className="lg:hidden p-2 -ml-2 text-muted-foreground hover:text-foreground rounded-md"
           onClick={onOpenMenu}

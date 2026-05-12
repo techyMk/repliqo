@@ -67,7 +67,7 @@ export function Pricing() {
           <p className="text-[11px] tracking-[0.2em] uppercase text-muted-foreground">— Pricing</p>
           <h2 className="mt-4 text-display-sm gradient-text font-semibold text-balance">
             Simple pricing.
-            <span className="font-display italic font-normal"> No </span>
+            <span className="font-display italic font-normal text-brand-gradient"> No </span>
             surprises.
           </h2>
           <p className="mt-5 text-muted-foreground text-balance">
@@ -91,7 +91,7 @@ export function Pricing() {
               )}
             >
               {t.featured && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-white text-black text-[10px] font-semibold uppercase tracking-[0.18em] px-3 py-1">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-[hsl(var(--brand-pink))] via-[hsl(var(--brand-purple))] to-[hsl(var(--brand-blue))] text-white text-[10px] font-semibold uppercase tracking-[0.18em] px-3 py-1 shadow-[0_4px_16px_-4px_hsl(var(--brand-purple)/0.6)]">
                   Most popular
                 </div>
               )}

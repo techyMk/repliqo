@@ -13,8 +13,8 @@ export default function NotFound() {
 
       <div className="relative">
         {/* Floating Repliqo icon as the visual anchor */}
-        <div className="inline-flex h-32 w-32 items-center justify-center rounded-[2rem] border border-white/10 bg-white/[0.03] glow-ring">
-          <LogoMark className="h-20 w-20" />
+        <div className="inline-flex h-40 w-40 items-center justify-center rounded-[2rem] border border-white/10 bg-white/[0.03] glow-ring">
+          <LogoMark className="h-28 w-28" />
         </div>
       </div>
 

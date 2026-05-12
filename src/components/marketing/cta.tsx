@@ -23,7 +23,7 @@ export function FinalCTA() {
 
           <h2 className="mt-7 text-display-sm gradient-text font-semibold text-balance">
             Reply once.
-            <span className="font-display italic font-normal"> Automate </span>
+            <span className="font-display italic font-normal text-brand-gradient"> Automate </span>
             forever.
           </h2>
           <p className="mt-5 text-muted-foreground text-balance max-w-xl mx-auto leading-relaxed">

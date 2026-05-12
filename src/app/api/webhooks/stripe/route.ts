@@ -20,7 +20,7 @@ import { NextRequest, NextResponse } from "next/server";
 import type Stripe from "stripe";
 import { serverEnv } from "@/lib/env";
 import { getStripe } from "@/lib/stripe/client";
-import { planFromPriceId } from "@/lib/stripe/plans";
+import { planFromPriceId } from "@/lib/stripe/billing";
 import { createSupabaseServiceClient } from "@/lib/supabase/server";
 
 export const runtime = "nodejs";

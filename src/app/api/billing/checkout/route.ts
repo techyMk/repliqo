@@ -12,7 +12,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getStripe } from "@/lib/stripe/client";
-import { priceIdFor, type PaidPlan } from "@/lib/stripe/plans";
+import { type PaidPlan } from "@/lib/stripe/plans";
+import { priceIdFor } from "@/lib/stripe/billing";
 import { publicEnv } from "@/lib/env";
 
 export const runtime = "nodejs";

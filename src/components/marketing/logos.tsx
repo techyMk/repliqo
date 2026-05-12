@@ -15,12 +15,12 @@ export function LogosRow() {
           Trusted by creators and brands you've heard of
         </p>
       </div>
-      <div className="mt-7 relative mask-fade-edges overflow-hidden">
-        <div className="flex w-max animate-marquee">
+      <div className="group mt-7 relative mask-fade-edges overflow-hidden">
+        <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused] motion-reduce:animate-none">
           {[...brands, ...brands].map((b, i) => (
             <span
               key={`${b}-${i}`}
-              className="mx-8 text-[15px] font-semibold tracking-[0.18em] text-foreground/55 hover:text-foreground/85 transition-colors whitespace-nowrap"
+              className="mx-8 text-[15px] font-semibold tracking-[0.18em] text-foreground/55 hover:text-foreground/95 transition-colors whitespace-nowrap"
             >
               {b}
             </span>

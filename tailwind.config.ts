@@ -95,6 +95,23 @@ const config: Config = {
           "0%,100%": { transform: "rotate(0deg)" },
           "50%": { transform: "rotate(180deg)" },
         },
+        float: {
+          "0%,100%": { transform: "translateY(0px)" },
+          "50%":     { transform: "translateY(-14px)" },
+        },
+        "halo-pulse": {
+          "0%,100%": { opacity: "0.5", transform: "scale(1)" },
+          "50%":     { opacity: "0.85", transform: "scale(1.08)" },
+        },
+        sheen: {
+          "0%":   { transform: "translateX(-150%) skewX(-12deg)" },
+          "100%": { transform: "translateX(250%)  skewX(-12deg)" },
+        },
+        "gradient-pan": {
+          "0%":   { backgroundPosition: "0% 50%" },
+          "50%":  { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -104,6 +121,10 @@ const config: Config = {
         "pulse-soft": "pulse-soft 2.5s ease-in-out infinite",
         marquee: "marquee 40s linear infinite",
         "aurora-rotate": "aurora-rotate 24s ease-in-out infinite",
+        float: "float 4.5s ease-in-out infinite",
+        "halo-pulse": "halo-pulse 3.5s ease-in-out infinite",
+        sheen: "sheen 2.4s ease-in-out infinite",
+        "gradient-pan": "gradient-pan 8s ease-in-out infinite",
       },
       backgroundImage: {
         "grid-fade":

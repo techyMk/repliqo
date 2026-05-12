@@ -1,6 +1,38 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import { LucideIcon, TrendingUp, TrendingDown } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { formatCompact, cn } from "@/lib/utils";
+
+// Eased count-up — interpolates from 0 to target over ~900 ms with an
+// ease-out cubic. Reaches the exact target value on the final frame.
+function useCountUp(target: number, duration = 900) {
+  const [value, setValue] = useState(0);
+  const startTs = useRef<number | null>(null);
+  const rafId = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (!Number.isFinite(target) || target === 0) {
+      setValue(target);
+      return;
+    }
+    startTs.current = null;
+    const tick = (now: number) => {
+      if (startTs.current == null) startTs.current = now;
+      const t = Math.min(1, (now - startTs.current) / duration);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setValue(t === 1 ? target : target * eased);
+      if (t < 1) rafId.current = requestAnimationFrame(tick);
+    };
+    rafId.current = requestAnimationFrame(tick);
+    return () => {
+      if (rafId.current != null) cancelAnimationFrame(rafId.current);
+    };
+  }, [target, duration]);
+
+  return value;
+}
 
 export function StatTile({
   label,
@@ -15,7 +47,10 @@ export function StatTile({
   hint?: string;
   delta?: string;
 }) {
-  const formatted = typeof value === "number" ? formatCompact(value) : value;
+  const isNumeric = typeof value === "number";
+  const counted = useCountUp(isNumeric ? value : 0);
+  const formatted = isNumeric ? formatCompact(Math.round(counted)) : value;
+
   const deltaPositive = delta && !delta.trim().startsWith("-");
   const DeltaIcon = deltaPositive ? TrendingUp : TrendingDown;
 

@@ -80,10 +80,19 @@ export function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.45, delay: i * 0.04 }}
-              className="group relative bg-background p-7 hover:bg-white/[0.02] transition-colors"
+              className="group relative bg-background p-7 hover:bg-white/[0.02] transition-all duration-300 hover:-translate-y-0.5"
             >
-              <div className="flex items-center justify-between mb-7">
-                <div className="h-9 w-9 rounded-xl border border-white/10 bg-white/[0.04] inline-flex items-center justify-center group-hover:bg-white/[0.08] group-hover:border-white/20 transition-all">
+              {/* Brand-tinted halo that fades in on hover */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(ellipse 70% 60% at 50% 0%, hsl(var(--brand-purple) / 0.10), transparent 70%)",
+                }}
+              />
+              <div className="relative flex items-center justify-between mb-7">
+                <div className="h-10 w-10 rounded-xl border border-white/10 bg-white/[0.04] inline-flex items-center justify-center group-hover:border-[hsl(var(--brand-purple)/0.45)] group-hover:bg-white/[0.08] transition-all duration-300">
                   <f.icon className="h-4 w-4" />
                 </div>
                 <span className="text-[10px] tabular-nums tracking-widest text-muted-foreground/60">

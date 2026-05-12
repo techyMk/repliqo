@@ -168,9 +168,10 @@ function PricingCta({ tier }: { tier: Tier }) {
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ plan: tier.planId }),
       });
-      const body = await res.json();
+      // Tolerate empty/non-JSON bodies (e.g. function crashed before responding)
+      const body = (await res.json().catch(() => ({}))) as { url?: string; error?: string };
       if (!res.ok || !body.url) {
-        throw new Error(body?.error || "Could not start checkout");
+        throw new Error(body?.error || `Checkout failed (${res.status})`);
       }
       window.location.href = body.url;
     } catch (err: any) {

@@ -50,8 +50,8 @@ export function BillingSection({
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ plan: target }),
       });
-      const body = await res.json();
-      if (!res.ok || !body.url) throw new Error(body?.error || "Checkout failed");
+      const body = (await res.json().catch(() => ({}))) as { url?: string; error?: string };
+      if (!res.ok || !body.url) throw new Error(body?.error || `Checkout failed (${res.status})`);
       window.location.href = body.url;
     } catch (err: any) {
       toast.error(err.message || "Failed to start checkout");
@@ -63,8 +63,8 @@ export function BillingSection({
     setBusy("portal");
     try {
       const res = await fetch("/api/billing/portal", { method: "POST" });
-      const body = await res.json();
-      if (!res.ok || !body.url) throw new Error(body?.error || "Could not open billing portal");
+      const body = (await res.json().catch(() => ({}))) as { url?: string; error?: string };
+      if (!res.ok || !body.url) throw new Error(body?.error || `Could not open billing portal (${res.status})`);
       window.location.href = body.url;
     } catch (err: any) {
       toast.error(err.message || "Failed to open portal");

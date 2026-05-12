@@ -22,16 +22,19 @@ export default async function OG() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 72,
-          // Satori (the renderer) doesn't parse the CSS `background` shorthand.
-          // Split into solid color + gradient image layers.
-          backgroundColor: "#0a0a0c",
+          // Solid base color + two layered radial gradients tinted with the
+          // Repliqo brand (pink → purple → blue). Satori doesn't accept the
+          // CSS `background` shorthand, so layers are stacked via backgroundImage.
+          backgroundColor: "#08080a",
           backgroundImage:
-            "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,255,255,0.10), transparent 60%)",
+            "radial-gradient(ellipse 60% 50% at 12% 90%, rgba(255,31,142,0.32), transparent 60%), " +
+            "radial-gradient(ellipse 60% 50% at 90% 10%, rgba(30,144,255,0.28), transparent 60%), " +
+            "radial-gradient(ellipse 50% 40% at 50% 50%, rgba(156,43,245,0.18), transparent 70%)",
           color: "white",
           fontFamily: "sans-serif",
         }}
       >
-        {/* dot grid layer */}
+        {/* faint dot grid for texture */}
         <div
           style={{
             position: "absolute",
@@ -45,27 +48,31 @@ export default async function OG() {
           }}
         />
 
-        {/* logo + wordmark */}
+        {/* logo + wordmark — gradient R bug */}
         <div style={{ display: "flex", alignItems: "center", gap: 14, zIndex: 1 }}>
           <div
             style={{
-              width: 44,
-              height: 44,
-              borderRadius: 12,
-              background: "white",
+              width: 48,
+              height: 48,
+              borderRadius: 14,
+              backgroundColor: "#0a0a0c",
+              backgroundImage:
+                "linear-gradient(135deg, #FF1F8E 0%, #9C2BF5 55%, #1E90FF 100%)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              boxShadow:
+                "0 0 0 1px rgba(255,255,255,0.12) inset, 0 8px 24px -8px rgba(156,43,245,0.5)",
             }}
           >
             <svg width="28" height="28" viewBox="0 0 32 32">
               <path
                 d="M9 10C9 8.89543 9.89543 8 11 8H19.5C22.5376 8 25 10.4624 25 13.5C25 16.5376 22.5376 19 19.5 19H17L14 23L13 19H11C9.89543 19 9 18.1046 9 17V10Z"
-                fill="black"
+                fill="white"
               />
-              <circle cx="14" cy="13.5" r="1.25" fill="white" />
-              <circle cx="18" cy="13.5" r="1.25" fill="white" />
-              <circle cx="22" cy="13.5" r="1.25" fill="white" />
+              <circle cx="14" cy="13.5" r="1.25" fill="#9C2BF5" />
+              <circle cx="18" cy="13.5" r="1.25" fill="#9C2BF5" />
+              <circle cx="22" cy="13.5" r="1.25" fill="#9C2BF5" />
             </svg>
           </div>
           <div style={{ fontSize: 24, fontWeight: 600, letterSpacing: "-0.02em" }}>
@@ -93,7 +100,7 @@ export default async function OG() {
           <div
             style={{
               fontSize: 24,
-              color: "rgba(255,255,255,0.55)",
+              color: "rgba(255,255,255,0.6)",
               maxWidth: 800,
               letterSpacing: "-0.01em",
             }}
@@ -118,7 +125,7 @@ export default async function OG() {
               display: "flex",
               alignItems: "center",
               gap: 24,
-              color: "rgba(255,255,255,0.6)",
+              color: "rgba(255,255,255,0.65)",
               fontSize: 18,
               letterSpacing: "-0.01em",
             }}

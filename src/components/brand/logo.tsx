@@ -1,40 +1,45 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
-// Repliqo wordmark + icon. Pure black/white. SVG-only for crispness.
+// Repliqo brand mark.
+//   <Logo />                          → wordmark (icon + "Repliqo" text)
+//   <Logo showWordmark={false} />     → icon-only
+//
+// Both are PNGs in /public, served via next/image with explicit dims so they
+// don't shift layout. The wordmark image is wide (~2.4:1); the icon is square.
 export function Logo({
   className,
   showWordmark = true,
+  iconClassName,
 }: {
   className?: string;
   showWordmark?: boolean;
+  iconClassName?: string;
 }) {
+  if (!showWordmark) {
+    return <LogoMark className={cn("h-7 w-7", iconClassName, className)} />;
+  }
   return (
-    <div className={cn("inline-flex items-center gap-2", className)}>
-      <LogoMark className="h-6 w-6" />
-      {showWordmark && (
-        <span className="text-[15px] font-semibold tracking-tight">Repliqo</span>
-      )}
-    </div>
+    <Image
+      src="/replico-logo.png"
+      alt="Repliqo"
+      width={420}
+      height={180}
+      priority
+      className={cn("h-7 w-auto select-none", className)}
+    />
   );
 }
 
 export function LogoMark({ className }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-hidden
-    >
-      <rect width="32" height="32" rx="8" fill="white" />
-      <path
-        d="M9 10C9 8.89543 9.89543 8 11 8H19.5C22.5376 8 25 10.4624 25 13.5C25 16.5376 22.5376 19 19.5 19H17L14 23L13 19H11C9.89543 19 9 18.1046 9 17V10Z"
-        fill="black"
-      />
-      <circle cx="14" cy="13.5" r="1.25" fill="white" />
-      <circle cx="18" cy="13.5" r="1.25" fill="white" />
-      <circle cx="22" cy="13.5" r="1.25" fill="white" />
-    </svg>
+    <Image
+      src="/replico-icon.png"
+      alt="Repliqo"
+      width={120}
+      height={120}
+      priority
+      className={cn("h-7 w-7 select-none", className)}
+    />
   );
 }

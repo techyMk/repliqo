@@ -45,7 +45,13 @@ export const metadata: Metadata = {
     title: "Repliqo",
     description: "Instagram DM automation, done right.",
   },
-  icons: { icon: "/favicon.svg" },
+  icons: {
+    icon: [
+      { url: "/icon.webp", type: "image/webp" },
+    ],
+    apple: [{ url: "/icon.webp" }],
+    shortcut: ["/icon.webp"],
+  },
 };
 
 export const viewport: Viewport = {

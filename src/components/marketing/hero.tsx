@@ -41,7 +41,7 @@ export function Hero() {
 
           <h1 className="mt-7 text-display gradient-text font-semibold text-balance">
             Turn Instagram comments into
-            <span className="font-display italic font-normal text-white/95"> automated </span>
+            <span className="font-display italic font-normal text-brand-gradient"> automated </span>
             sales.
           </h1>
 

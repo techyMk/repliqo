@@ -38,6 +38,14 @@
     --ring: 0 0% 80%;
 
     --radius: 0.875rem;
+
+    /* Brand gradient — pulled from the Repliqo logo: pink → purple → blue.
+       Used sparingly for atmospheric accents (aurora, text gradient on
+       display headlines, focus rings on brand moments). Never as a primary
+       button/background fill. */
+    --brand-pink:   327 100% 56%;  /* #FF1F8E */
+    --brand-purple: 273 91%  56%;  /* #9C2BF5 */
+    --brand-blue:   215 100% 56%;  /* #1E90FF */
   }
 
   html, body {
@@ -160,18 +168,42 @@
     -webkit-text-fill-color: transparent;
   }
 
-  /* Aurora — slow rotating conic gradient used as a hero background */
+  /* Aurora — slow rotating conic gradient used as atmospheric background.
+     Now tinted with the brand gradient (pink → purple → blue) at low alpha
+     so it reads as a colored haze, not a literal gradient. */
   .aurora {
     background:
       conic-gradient(
         from 0deg at 50% 50%,
-        rgba(255,255,255,0.08) 0deg,
-        rgba(255,255,255,0.02) 90deg,
-        rgba(255,255,255,0.10) 180deg,
-        rgba(255,255,255,0.02) 270deg,
-        rgba(255,255,255,0.08) 360deg
+        hsl(var(--brand-pink)   / 0.20) 0deg,
+        hsl(var(--brand-purple) / 0.05) 90deg,
+        hsl(var(--brand-blue)   / 0.22) 180deg,
+        hsl(var(--brand-purple) / 0.05) 270deg,
+        hsl(var(--brand-pink)   / 0.20) 360deg
       );
-    filter: blur(80px);
+    filter: blur(90px);
+  }
+
+  /* Brand-gradient text — pink → purple → blue. Reserved for display
+     headlines, accent words, and brand callouts. Don't apply to body. */
+  .text-brand-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--brand-pink)) 0%,
+      hsl(var(--brand-purple)) 55%,
+      hsl(var(--brand-blue)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Soft brand-colored halo — for badges, dots, focus moments. */
+  .brand-halo {
+    box-shadow:
+      0 0 0 1px hsl(var(--brand-purple) / 0.4),
+      0 0 24px -4px hsl(var(--brand-pink) / 0.4),
+      0 0 48px -8px hsl(var(--brand-purple) / 0.3);
   }
 
   /* Fluid heading sizes — clamps grow with viewport, no media queries */

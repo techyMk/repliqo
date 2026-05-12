@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "Bash(npx next *)",
+      "Bash(npm run *)",
+      "Read(//c/Users/shoba/AppData/Local/Temp/claude/c--Users-shoba-OneDrive-Documents-repliqo/c3a631c9-39bd-4b57-88f4-0087da5079bb/tasks/**)",
+      "Bash(npm ls *)"
+    ]
+  }
+}

@@ -107,7 +107,7 @@ export default function SecurityPage() {
       <h2>9. Reporting a vulnerability</h2>
       <p>
         We treat all reports as a top priority. Email{" "}
-        <a href="mailto:security@repliqo.app">security@repliqo.app</a> with:
+        <a href="mailto:techymk.dev@gmail.com">techymk.dev@gmail.com</a> with:
       </p>
       <ul>
         <li>A description of the issue and its impact</li>

@@ -138,7 +138,7 @@ export default function TermsPage() {
 
       <h2>16. Contact</h2>
       <p>
-        Repliqo, Inc. — <a href="mailto:hello@repliqo.app">hello@repliqo.app</a>
+        Repliqo, Inc. — <a href="mailto:techymk.dev@gmail.com">techymk.dev@gmail.com</a>
       </p>
     </LegalLayout>
   );

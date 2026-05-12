@@ -13,7 +13,7 @@ export default function PrivacyPage() {
         This Privacy Policy explains what data Repliqo collects, why we collect it,
         and the controls you have over it. We've kept it as direct as we can —
         if anything is unclear, email{" "}
-        <a href="mailto:privacy@repliqo.app">privacy@repliqo.app</a>.
+        <a href="mailto:techymk.dev@gmail.com">techymk.dev@gmail.com</a>.
       </p>
 
       <h2>1. Who we are</h2>
@@ -102,14 +102,14 @@ export default function PrivacyPage() {
       </ul>
       <p>
         If you discover a vulnerability, please email{" "}
-        <a href="mailto:security@repliqo.app">security@repliqo.app</a>. We
+        <a href="mailto:techymk.dev@gmail.com">techymk.dev@gmail.com</a>. We
         respond within 1 business day.
       </p>
 
       <h2>7. Your rights</h2>
       <p>You can, at any time:</p>
       <ul>
-        <li>Export your data (request via <a href="mailto:privacy@repliqo.app">privacy@repliqo.app</a>)</li>
+        <li>Export your data (request via <a href="mailto:techymk.dev@gmail.com">techymk.dev@gmail.com</a>)</li>
         <li>Delete your account from <code>/dashboard/settings</code> — this triggers a 30-day deletion cascade</li>
         <li>Disconnect an Instagram account, which immediately purges that account's encrypted token</li>
         <li>Object to processing or request restriction — write to us</li>
@@ -145,8 +145,8 @@ export default function PrivacyPage() {
       <h2>12. Contact</h2>
       <p>
         Repliqo, Inc.<br />
-        Privacy questions: <a href="mailto:privacy@repliqo.app">privacy@repliqo.app</a><br />
-        Security: <a href="mailto:security@repliqo.app">security@repliqo.app</a>
+        Privacy questions: <a href="mailto:techymk.dev@gmail.com">techymk.dev@gmail.com</a><br />
+        Security: <a href="mailto:techymk.dev@gmail.com">techymk.dev@gmail.com</a>
       </p>
     </LegalLayout>
   );

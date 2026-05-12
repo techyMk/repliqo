@@ -13,25 +13,25 @@ const channels = [
     icon: MessageCircle,
     title: "Support",
     body: "Stuck on a setup step or seeing weird behavior? We answer every email in under 24 hours.",
-    email: "hello@repliqo.app",
+    email: "techymk.dev@gmail.com",
   },
   {
     icon: Shield,
     title: "Security",
     body: "Found a vulnerability or have a question about how we handle tokens? Mail us — we respond within 1 business day.",
-    email: "security@repliqo.app",
+    email: "techymk.dev@gmail.com",
   },
   {
     icon: Building2,
     title: "Sales",
     body: "Running 5+ accounts or need a custom plan? We'll set up a demo.",
-    email: "sales@repliqo.app",
+    email: "techymk.dev@gmail.com",
   },
   {
     icon: Mail,
     title: "Privacy",
     body: "Data deletion, export, or anything covered by our privacy policy.",
-    email: "privacy@repliqo.app",
+    email: "techymk.dev@gmail.com",
   },
 ];
 

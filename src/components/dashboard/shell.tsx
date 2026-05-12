@@ -5,15 +5,20 @@ import { Sidebar } from "./sidebar";
 import { Topbar } from "./topbar";
 import { CommandPalette } from "./command-palette";
 import { cn } from "@/lib/utils";
+import type { PlanTier } from "@/lib/types";
 
 export function DashboardShell({
   children,
   profile,
   igAccounts,
+  plan,
+  dmsThisMonth,
 }: {
   children: React.ReactNode;
   profile: any;
   igAccounts: { id: string; username: string; profile_picture_url: string | null; status: string }[];
+  plan: PlanTier;
+  dmsThisMonth: number;
 }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [paletteOpen, setPaletteOpen] = useState(false);
@@ -33,7 +38,12 @@ export function DashboardShell({
   return (
     <div className="min-h-screen bg-background">
       {/* Sidebar — desktop */}
-      <Sidebar igAccounts={igAccounts} className="hidden lg:flex" />
+      <Sidebar
+        igAccounts={igAccounts}
+        plan={plan}
+        dmsThisMonth={dmsThisMonth}
+        className="hidden lg:flex"
+      />
 
       {/* Mobile sidebar drawer */}
       <div
@@ -52,7 +62,12 @@ export function DashboardShell({
             mobileOpen ? "translate-x-0" : "-translate-x-full"
           )}
         >
-          <Sidebar igAccounts={igAccounts} onNavigate={() => setMobileOpen(false)} />
+          <Sidebar
+            igAccounts={igAccounts}
+            plan={plan}
+            dmsThisMonth={dmsThisMonth}
+            onNavigate={() => setMobileOpen(false)}
+          />
         </div>
       </div>
 

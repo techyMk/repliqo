@@ -13,7 +13,9 @@ import {
   Plus,
 } from "lucide-react";
 import { Logo, LogoMark } from "@/components/brand/logo";
-import { cn } from "@/lib/utils";
+import { cn, formatCompact } from "@/lib/utils";
+import { PLANS } from "@/lib/stripe/plans";
+import type { PlanTier } from "@/lib/types";
 
 const nav = [
   { label: "Overview",    href: "/dashboard",             icon: LayoutDashboard },
@@ -30,10 +32,14 @@ const settingsNav = [
 export function Sidebar({
   className,
   igAccounts,
+  plan,
+  dmsThisMonth,
   onNavigate,
 }: {
   className?: string;
   igAccounts: { id: string; username: string; profile_picture_url: string | null; status: string }[];
+  plan: PlanTier;
+  dmsThisMonth: number;
   onNavigate?: () => void;
 }) {
   const pathname = usePathname();
@@ -125,32 +131,53 @@ export function Sidebar({
       </nav>
 
       <div className="p-3 border-t border-white/[0.06]">
-        <div className="relative rounded-2xl border border-white/[0.1] bg-gradient-to-b from-white/[0.05] to-transparent p-4 overflow-hidden">
-          {/* Brand icon as a subtle corner watermark */}
-          <LogoMark
-            className="absolute -right-4 -top-4 h-24 w-24 opacity-25 pointer-events-none"
-            aria-hidden
-          />
-          <div className="relative flex items-center gap-1.5 text-[10px] tracking-[0.18em] uppercase text-foreground/80">
-            Free plan
-          </div>
-          <div className="mt-3 text-[13px] text-foreground/85 leading-tight">
-            <span className="font-semibold tabular-nums">312</span>
-            <span className="text-muted-foreground"> / 500 DMs this month</span>
-          </div>
-          <div className="mt-2.5 h-1 rounded-full bg-white/[0.06] overflow-hidden">
-            <div className="h-full w-[62%] bg-gradient-to-r from-[hsl(var(--brand-pink))] via-[hsl(var(--brand-purple))] to-[hsl(var(--brand-blue))] shadow-[0_0_12px_hsl(var(--brand-purple)/0.5)]" />
-          </div>
-          <Link
-            href="/dashboard/settings"
-            onClick={onNavigate}
-            className="mt-3 inline-flex text-[12px] font-medium text-foreground hover:underline underline-offset-4"
-          >
-            Upgrade →
-          </Link>
-        </div>
+        <PlanTile plan={plan} dmsThisMonth={dmsThisMonth} onNavigate={onNavigate} />
       </div>
     </aside>
+  );
+}
+
+function PlanTile({
+  plan,
+  dmsThisMonth,
+  onNavigate,
+}: {
+  plan: PlanTier;
+  dmsThisMonth: number;
+  onNavigate?: () => void;
+}) {
+  const def = PLANS[plan];
+  const cap = def.limits.dms_per_month;
+  const pct = Math.min(100, Math.round((dmsThisMonth / cap) * 100));
+  const isFreeOrStarter = plan === "free" || plan === "starter";
+
+  return (
+    <div className="relative rounded-2xl border border-white/[0.1] bg-gradient-to-b from-white/[0.05] to-transparent p-4 overflow-hidden">
+      <LogoMark
+        className="absolute -right-4 -top-4 h-24 w-24 opacity-25 pointer-events-none"
+        aria-hidden
+      />
+      <div className="relative flex items-center gap-1.5 text-[10px] tracking-[0.18em] uppercase text-foreground/80">
+        {def.name} plan
+      </div>
+      <div className="mt-3 text-[13px] text-foreground/85 leading-tight">
+        <span className="font-semibold tabular-nums">{formatCompact(dmsThisMonth)}</span>
+        <span className="text-muted-foreground"> / {formatCompact(cap)} DMs this month</span>
+      </div>
+      <div className="mt-2.5 h-1 rounded-full bg-white/[0.06] overflow-hidden">
+        <div
+          className="h-full bg-gradient-to-r from-[hsl(var(--brand-pink))] via-[hsl(var(--brand-purple))] to-[hsl(var(--brand-blue))] shadow-[0_0_12px_hsl(var(--brand-purple)/0.5)] transition-[width] duration-500"
+          style={{ width: `${pct}%` }}
+        />
+      </div>
+      <Link
+        href="/dashboard/settings"
+        onClick={onNavigate}
+        className="mt-3 inline-flex text-[12px] font-medium text-foreground hover:underline underline-offset-4"
+      >
+        {isFreeOrStarter ? "Upgrade →" : "Manage plan →"}
+      </Link>
+    </div>
   );
 }
 

@@ -1,10 +1,12 @@
+import { Suspense } from "react";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Badge } from "@/components/ui/badge";
 import { PageHeader } from "@/components/dashboard/page-header";
+import { BillingSection } from "@/components/dashboard/billing-section";
+import type { PlanTier } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
@@ -45,20 +47,14 @@ export default async function SettingsPage() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader className="flex-row items-center justify-between space-y-0">
-          <CardTitle>Plan</CardTitle>
-          <Badge variant="muted" className="uppercase tracking-widest text-[10px]">{profile?.plan ?? "free"}</Badge>
-        </CardHeader>
-        <CardContent>
-          <p className="text-sm text-muted-foreground">
-            Upgrade to unlock unlimited automations, follow gate, and priority support.
-          </p>
-          <div className="mt-4">
-            <Button>Manage plan</Button>
-          </div>
-        </CardContent>
-      </Card>
+      <Suspense fallback={null}>
+        <BillingSection
+          plan={(profile?.plan as PlanTier) ?? "free"}
+          status={profile?.subscription_status ?? null}
+          currentPeriodEnd={profile?.current_period_end ?? null}
+          hasCustomer={Boolean(profile?.stripe_customer_id)}
+        />
+      </Suspense>
 
       <Card>
         <CardHeader>

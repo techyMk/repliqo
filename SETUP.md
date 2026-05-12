@@ -399,6 +399,82 @@ In production, mirror these into Vercel's env vars and redeploy.
 
 ---
 
+# Optional · Wire Stripe billing (15 min, $0 — test mode)
+
+The pricing page can drive real Stripe Checkout flows in test mode — no real money moves, recruiters can "subscribe" with test cards, and your profile actually updates to `growth` or `agency` via webhook. Strong portfolio signal.
+
+## S1. Run the billing migration
+
+In Supabase **SQL Editor → + New query**, paste the contents of `supabase/migrations/002_billing.sql`, then **Run**. This adds `stripe_customer_id`, `stripe_subscription_id`, `subscription_status`, and `current_period_end` columns to `profiles`.
+
+## S2. Create a Stripe account (test mode)
+
+1. <https://dashboard.stripe.com/register> — sign up. Leave "test mode" ON (top-right toggle).
+2. You don't need to activate the account or submit business details for test mode to work.
+
+## S3. Create two products + prices
+
+In Stripe Dashboard → **Product catalog → + Add product**:
+
+| Product | Recurring price | Notes |
+| --- | --- | --- |
+| **Repliqo Growth** | $29.00 USD / month | Standard pricing model · Recurring |
+| **Repliqo Agency** | $99.00 USD / month | Standard pricing model · Recurring |
+
+After saving each, click the product → copy the **Price ID** (looks like `price_1Q...`). You'll need both.
+
+## S4. Get your API keys
+
+Stripe Dashboard → **Developers → API keys**. Copy:
+
+| Stripe label | Goes into `.env.local` as |
+| --- | --- |
+| **Publishable key** (`pk_test_...`) | `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` |
+| **Secret key** (`sk_test_...`) — click *Reveal* | `STRIPE_SECRET_KEY` |
+| Growth price ID from step S3 | `STRIPE_PRICE_ID_GROWTH` |
+| Agency price ID from step S3 | `STRIPE_PRICE_ID_AGENCY` |
+
+## S5. Configure the webhook
+
+Stripe needs to call your `/api/webhooks/stripe` endpoint when subscriptions change.
+
+**For local dev** — use the Stripe CLI to forward events to localhost:
+
+```bash
+# Install: https://docs.stripe.com/stripe-cli
+stripe login
+stripe listen --forward-to localhost:3000/api/webhooks/stripe
+```
+
+The CLI prints a webhook signing secret (`whsec_...`) — paste it into `.env.local` as `STRIPE_WEBHOOK_SECRET`. Keep this terminal running while you test.
+
+**For production** (Vercel):
+
+1. Stripe Dashboard → **Developers → Webhooks → + Add endpoint**
+2. **Endpoint URL:** `https://repliqo-yourname.vercel.app/api/webhooks/stripe`
+3. **Events to send:**
+   - `checkout.session.completed`
+   - `customer.subscription.created`
+   - `customer.subscription.updated`
+   - `customer.subscription.deleted`
+   - `invoice.payment_failed`
+4. After creating, click the endpoint → **Signing secret → Reveal → Copy**
+5. Paste into Vercel env vars as `STRIPE_WEBHOOK_SECRET` → Redeploy
+
+## S6. Test the upgrade flow
+
+1. Restart `npm run dev` so the new env vars load
+2. Visit `/dashboard/settings` → click **Upgrade to Growth · $29**
+3. You'll redirect to Stripe-hosted Checkout
+4. Use test card: **`4242 4242 4242 4242`**, any future expiry (e.g. `12/30`), any 3-digit CVC, any name, any postal code
+5. Click **Subscribe**
+6. You'll bounce back to `/dashboard/settings?billing=success`
+7. The webhook fires, your `profiles.plan` flips to `"growth"`, sidebar plan tile updates, "Manage billing in Stripe" button replaces the upgrade button
+
+Test more cards: <https://docs.stripe.com/testing#cards>
+
+---
+
 # Optional · Enable "Continue with Google" sign-in (10 min, $0)
 
 Repliqo's login/signup pages already have a **Continue with Google** button. To make it work, configure Google OAuth in two places: Google Cloud Console (create credentials) and Supabase (enable + paste credentials).

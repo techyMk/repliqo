@@ -4,7 +4,6 @@ import { LogosRow } from "@/components/marketing/logos";
 import { Features } from "@/components/marketing/features";
 import { HowItWorks } from "@/components/marketing/how-it-works";
 import { AutomationExamples } from "@/components/marketing/automation-examples";
-import { Testimonials } from "@/components/marketing/testimonials";
 import { Pricing } from "@/components/marketing/pricing";
 import { FAQ } from "@/components/marketing/faq";
 import { FinalCTA } from "@/components/marketing/cta";
@@ -19,7 +18,6 @@ export default function HomePage() {
       <Features />
       <HowItWorks />
       <AutomationExamples />
-      <Testimonials />
       <Pricing />
       <FAQ />
       <FinalCTA />

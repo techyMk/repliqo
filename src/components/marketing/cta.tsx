@@ -27,7 +27,7 @@ export function FinalCTA() {
             forever.
           </h2>
           <p className="mt-5 text-muted-foreground text-balance max-w-xl mx-auto leading-relaxed">
-            Join 12,000+ creators automating their Instagram inbox. Free forever on the starter plan — no credit card.
+            Free forever on the starter plan. No credit card required. Live demo data on signup, so you can see every screen in seconds.
           </p>
           <div className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-2.5">
             <Button asChild size="lg" className="min-w-[160px]">

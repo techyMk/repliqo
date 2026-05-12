@@ -25,18 +25,34 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
 
       {/* Right side — visual */}
       <div className="hidden lg:flex relative bg-[#0a0a0a] border-l border-white/[0.06] items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-line-grid mask-radial opacity-50" />
+        <div aria-hidden className="absolute inset-0 bg-line-grid mask-radial opacity-40" />
+        <div aria-hidden className="absolute inset-0 flex items-center justify-center">
+          <div className="aurora h-[600px] w-[600px] animate-aurora-rotate opacity-40" />
+        </div>
         <div className="relative max-w-md text-center px-10 z-10">
           <div className="inline-flex h-24 w-24 items-center justify-center rounded-3xl border border-white/10 bg-white/[0.04] mb-7 glow-ring">
             <Logo showWordmark={false} className="h-16 w-16" />
           </div>
-          <blockquote className="text-2xl font-medium tracking-tight gradient-text text-balance leading-snug">
-            "Repliqo replaced three full-time DM responders. The ROI was obvious within a week."
-          </blockquote>
-          <div className="mt-6">
-            <div className="text-sm font-medium">Iris Tan</div>
-            <div className="text-xs text-muted-foreground">Founder, Northwave</div>
-          </div>
+          <h2 className="text-3xl font-semibold tracking-tightest gradient-text text-balance leading-tight">
+            Reply once.
+            <span className="font-display italic font-normal text-brand-gradient"> Automate </span>
+            forever.
+          </h2>
+          <p className="mt-4 text-[13px] text-muted-foreground leading-relaxed text-balance">
+            Instagram DM automation built on the official API. Sub-second response, encrypted tokens, real webhooks.
+          </p>
+          <ul className="mt-8 space-y-3 text-left">
+            {[
+              "Sub-second webhook → DM delivery",
+              "AES-256-GCM token storage at rest",
+              "Built on the official Instagram API",
+            ].map((line) => (
+              <li key={line} className="flex items-start gap-2.5 text-[13px] text-foreground/85">
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-gradient-to-br from-[hsl(var(--brand-pink))] to-[hsl(var(--brand-blue))] shrink-0" />
+                {line}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

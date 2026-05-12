@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Why we built Repliqo and where we're going.",
+  description: "Why this project exists and how it's built.",
 };
 
 export default function AboutPage() {
@@ -15,37 +15,49 @@ export default function AboutPage() {
       <MarketingNav />
       <section className="pt-32 pb-20">
         <div className="container max-w-3xl">
-          <p className="text-xs tracking-widest uppercase text-muted-foreground">About</p>
-          <h1 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight gradient-text text-balance">
-            Reply once. Automate forever.
+          <p className="text-[11px] tracking-[0.2em] uppercase text-muted-foreground">— About</p>
+          <h1 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tightest gradient-text text-balance">
+            Reply once.
+            <span className="font-display italic font-normal text-brand-gradient"> Automate </span>
+            forever.
           </h1>
 
           <div className="mt-10 space-y-6 text-foreground/85 leading-relaxed">
             <p>
-              Repliqo started because every creator we know has the same problem.
-              A post goes viral, the comments fill up with "link?" — and the
-              creator spends three days copy-pasting the same DM. The good ones
-              hire an assistant. Everyone else loses the moment.
+              Repliqo is a portfolio project — a production-grade SaaS that turns
+              Instagram comments into automated DMs, built end-to-end against
+              Meta's real APIs. Not a mockup, not a clone, not a clever landing
+              page with broken buttons underneath.
             </p>
             <p>
-              Existing tools either felt like 2014 (clunky, ugly, built around
-              Facebook Pages no one uses) or used grey-area APIs that get
-              accounts banned. We wanted a third option: a modern, minimal,
-              official-API-only tool that creators could trust with their
-              audience.
+              The motivation was simple. Existing comment-to-DM tools fall into
+              two camps: clunky and dated, or grey-area scrapers that get
+              accounts banned. I wanted to demonstrate a third option — a
+              modern, minimal, official-API-only product designed the way a
+              well-funded SaaS would design it, with the architecture to match.
             </p>
             <p>
-              So we built one. The whole product runs on the new Instagram
-              Login flow — no Facebook Page required. Webhooks for sub-second
-              response. AES-256 encryption for every token. The kind of
-              foundation we'd want if it were our own follower base.
+              Under the hood: Next.js 15 App Router, Supabase with row-level
+              security, AES-256-GCM token encryption, HMAC-verified webhooks,
+              and an atomic counter scheme so two parallel comments never lose
+              an increment. Every gotcha in Meta's documentation — the OAuth
+              token base-URL flakiness, the 7-day private-reply window, the
+              propagation race on comment replies — is handled in the code with
+              comments at the call site explaining why.
+            </p>
+            <p>
+              The marketing site uses Geist + Instrument Serif, fluid
+              type-clamps, a hand-rolled aurora system tinted with the brand
+              gradient, and zero copy-pasted shadcn CLI components. Every
+              primitive (Button, Card, Dialog, …) is committed source under{" "}
+              <code className="font-mono text-foreground/90">src/components/ui</code>.
             </p>
           </div>
 
           <div className="mt-12 grid sm:grid-cols-3 gap-4">
-            <Stat label="Creators using Repliqo" value="12,000+" />
-            <Stat label="DMs delivered" value="42M" />
-            <Stat label="Uptime · 90 days" value="99.97%" />
+            <Stat label="Production routes" value="27" />
+            <Stat label="Postgres tables" value="8" />
+            <Stat label="Encryption at rest" value="AES-256" />
           </div>
 
           <div className="mt-14 flex flex-col sm:flex-row items-center gap-3">
@@ -53,7 +65,7 @@ export default function AboutPage() {
               <Link href="/signup">Start free</Link>
             </Button>
             <Button asChild size="lg" variant="secondary">
-              <Link href="/#pricing">See pricing</Link>
+              <Link href="/#features">See features</Link>
             </Button>
           </div>
         </div>
@@ -65,9 +77,11 @@ export default function AboutPage() {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-5">
-      <div className="text-2xl font-semibold tracking-tight tabular-nums">{value}</div>
-      <div className="mt-1 text-xs text-muted-foreground">{label}</div>
+    <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-5 surface-hover">
+      <div className="text-2xl font-semibold tracking-tightest tabular-nums">{value}</div>
+      <div className="mt-1 text-[11px] tracking-[0.12em] uppercase text-muted-foreground">
+        {label}
+      </div>
     </div>
   );
 }

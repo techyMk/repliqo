@@ -25,7 +25,6 @@ export function MarketingFooter() {
             title="Company"
             links={[
               ["About", "/about"],
-              ["Customers", "/customers"],
               ["Contact", "/contact"],
             ]}
           />

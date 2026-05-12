@@ -32,16 +32,22 @@ export function DashboardEmptyState() {
   };
 
   return (
-    <div className="min-h-[60vh] flex items-center justify-center">
+    <div className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+      <div aria-hidden className="absolute inset-0 -z-10 flex items-center justify-center">
+        <div className="aurora h-[600px] w-[600px] animate-aurora-rotate opacity-50" />
+      </div>
+      <div aria-hidden className="absolute inset-0 -z-10 bg-dot-grid mask-radial opacity-30" />
+
       <div className="w-full max-w-3xl">
         <div className="text-center">
-          <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] mb-5">
+          <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] mb-6 glow-ring">
             <Zap className="h-5 w-5" />
           </div>
-          <h2 className="text-2xl font-semibold tracking-tight">
-            Welcome to Repliqo
+          <h2 className="text-display-sm font-semibold gradient-text text-balance">
+            Welcome to
+            <span className="font-display italic font-normal"> Repliqo</span>
           </h2>
-          <p className="mt-2 text-sm text-muted-foreground max-w-md mx-auto">
+          <p className="mt-3 text-[13px] text-muted-foreground max-w-md mx-auto leading-relaxed">
             Pick a path below. Either way you'll be inside the product in a few
             seconds.
           </p>

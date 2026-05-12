@@ -2,6 +2,9 @@
 
 > **Production-grade SaaS that turns Instagram comments into automated DMs.** Built as a portfolio piece — but it's not a mockup. The whole product works end-to-end against Meta's real APIs.
 
+<!-- Replace <your-url> with your live Vercel deployment -->
+[![Live demo](https://img.shields.io/badge/Live_demo-online-3FCF8E?style=for-the-badge)](https://repliqo.vercel.app)
+&nbsp;
 [![Next.js](https://img.shields.io/badge/Next.js-15-000?logo=nextdotjs)](https://nextjs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript)](https://www.typescriptlang.org)
 [![Supabase](https://img.shields.io/badge/Supabase-Postgres-3FCF8E?logo=supabase)](https://supabase.com)
@@ -12,6 +15,23 @@ Instagram comment → Meta webhook → Repliqo  →  public reply
                                             ↘  DM with smart link
                                             ↘  follow gate (optional)
 ```
+
+<!--
+  Drop your screenshots in /public/screenshots/ then uncomment the block below.
+  Recommended captures (all in dark mode):
+    01-hero.png             1600×900 — landing page hero
+    02-dashboard.png        1600×900 — dashboard with demo data
+    03-builder.png          1600×900 — automation builder + DM preview
+    04-analytics.png        1600×900 — analytics page
+-->
+<!--
+![Landing page](./public/screenshots/01-hero.png)
+
+|                                                                |                                                                  |
+| :------------------------------------------------------------: | :--------------------------------------------------------------: |
+| ![Dashboard](./public/screenshots/02-dashboard.png) Dashboard   | ![Builder](./public/screenshots/03-builder.png) Automation builder |
+| ![Analytics](./public/screenshots/04-analytics.png) Analytics   | ![Inbox](./public/screenshots/05-inbox.png) Inbox                  |
+-->
 
 ---
 

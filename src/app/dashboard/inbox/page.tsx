@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { ActivityFeed } from "@/components/dashboard/activity-feed";
+import { PageHeader } from "@/components/dashboard/page-header";
 
 export const dynamic = "force-dynamic";
 
@@ -36,17 +37,16 @@ export default async function InboxPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Inbox</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Every trigger, reply, DM, and failure — searchable timeline.
-          </p>
-        </div>
-        <Badge variant="muted" className="rounded-full">
-          {all?.length ?? 0} events
-        </Badge>
-      </div>
+      <PageHeader
+        eyebrow="Activity"
+        title="Inbox"
+        description="Every trigger, reply, DM, and failure — searchable timeline."
+        actions={
+          <Badge variant="muted" className="rounded-full">
+            {all?.length ?? 0} events
+          </Badge>
+        }
+      />
 
       <Tabs defaultValue="all">
         <TabsList>

@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { StatTile } from "@/components/dashboard/stat-tile";
 import { OverviewChart } from "@/components/dashboard/overview-chart";
+import { PageHeader } from "@/components/dashboard/page-header";
 import { TrendingUp, MessageSquare, Send, Users } from "lucide-react";
 import { formatCompact } from "@/lib/utils";
 
@@ -42,12 +43,11 @@ export default async function AnalyticsPage() {
 
   return (
     <div className="space-y-8">
-      <div>
-        <h1 className="text-2xl font-semibold tracking-tight">Analytics</h1>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Conversion, engagement, and what's actually moving the needle.
-        </p>
-      </div>
+      <PageHeader
+        eyebrow="Performance"
+        title="Analytics"
+        description="Conversion, engagement, and what's actually moving the needle."
+      />
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <StatTile label="Total triggers" value={(keywordRows?.length || 0) * 1.04 | 0} icon={MessageSquare} />

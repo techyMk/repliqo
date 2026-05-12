@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
+import { PageHeader } from "@/components/dashboard/page-header";
 
 export const dynamic = "force-dynamic";
 
@@ -18,12 +19,11 @@ export default async function SettingsPage() {
 
   return (
     <div className="space-y-6 max-w-2xl">
-      <div>
-        <h1 className="text-2xl font-semibold tracking-tight">Settings</h1>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Manage your account, workspace, and billing.
-        </p>
-      </div>
+      <PageHeader
+        eyebrow="Account"
+        title="Settings"
+        description="Manage your account, workspace, and billing."
+      />
 
       <Card>
         <CardHeader>

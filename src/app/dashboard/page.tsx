@@ -10,6 +10,7 @@ import { ActivityFeed } from "@/components/dashboard/activity-feed";
 import { OverviewChart } from "@/components/dashboard/overview-chart";
 import { OnboardingCard } from "@/components/dashboard/onboarding-card";
 import { DashboardEmptyState } from "@/components/dashboard/empty-state";
+import { PageHeader } from "@/components/dashboard/page-header";
 
 export const dynamic = "force-dynamic";
 
@@ -85,20 +86,18 @@ export default async function DashboardOverviewPage() {
         dismissed={Boolean(profile?.onboarded_at)}
       />
 
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Overview</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Performance across all your connected Instagram accounts.
-          </p>
-        </div>
-        <Button asChild>
-          <Link href="/dashboard/automations/new">
-            New automation <ArrowRight className="h-4 w-4" />
-          </Link>
-        </Button>
-      </div>
+      <PageHeader
+        eyebrow="Dashboard"
+        title="Overview"
+        description="Performance across all your connected Instagram accounts."
+        actions={
+          <Button asChild>
+            <Link href="/dashboard/automations/new">
+              New automation <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
+        }
+      />
 
       {/* Stat tiles */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">

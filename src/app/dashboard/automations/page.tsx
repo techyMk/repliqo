@@ -4,6 +4,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { PageHeader } from "@/components/dashboard/page-header";
 import type { Automation } from "@/lib/types";
 import { formatCompact, relativeTime } from "@/lib/utils";
 
@@ -23,19 +24,18 @@ export default async function AutomationsPage() {
 
   return (
     <div className="space-y-8">
-      <div className="flex items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Automations</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Every comment-triggered DM you've configured.
-          </p>
-        </div>
-        <Button asChild>
-          <Link href="/dashboard/automations/new">
-            <Plus className="h-4 w-4" /> New automation
-          </Link>
-        </Button>
-      </div>
+      <PageHeader
+        eyebrow="Workspace"
+        title="Automations"
+        description="Every comment-triggered DM you've configured."
+        actions={
+          <Button asChild>
+            <Link href="/dashboard/automations/new">
+              <Plus className="h-4 w-4" /> New automation
+            </Link>
+          </Button>
+        }
+      />
 
       {automations.length === 0 ? (
         <Card className="p-10 text-center">

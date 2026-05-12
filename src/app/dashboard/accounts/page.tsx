@@ -4,6 +4,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { PageHeader } from "@/components/dashboard/page-header";
 import { formatCompact, relativeTime } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -26,19 +27,18 @@ export default async function AccountsPage({
 
   return (
     <div className="space-y-6">
-      <div className="flex items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Connected accounts</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Instagram Business or Creator accounts authorized to use Repliqo.
-          </p>
-        </div>
-        <Button asChild>
-          <Link href="/api/auth/instagram?return_to=/dashboard/accounts">
-            <Plus className="h-4 w-4" /> Connect Instagram
-          </Link>
-        </Button>
-      </div>
+      <PageHeader
+        eyebrow="Settings"
+        title="Connected accounts"
+        description="Instagram Business or Creator accounts authorized to use Repliqo."
+        actions={
+          <Button asChild>
+            <Link href="/api/auth/instagram?return_to=/dashboard/accounts">
+              <Plus className="h-4 w-4" /> Connect Instagram
+            </Link>
+          </Button>
+        }
+      />
 
       {params.required && (
         <Card className="p-4 flex items-start gap-3 border-amber-500/30 bg-amber-500/[0.06]">

@@ -31,13 +31,32 @@ export default function NotFound() {
   const smx = useSpring(mx, { stiffness: 120, damping: 18, mass: 0.6 });
   const smy = useSpring(my, { stiffness: 120, damping: 18, mass: 0.6 });
 
-  // Map normalized cursor → transforms.
-  const iconRotateY = useTransform(smx, [-1, 1], [-18, 18]);
-  const iconRotateX = useTransform(smy, [-1, 1], [12, -12]); // inverted: cursor up = tilt forward
+  // Map normalized cursor → transforms across 8 depth planes.
+  // Foreground moves WITH cursor (positive range), background AGAINST cursor
+  // (negative range). The greater the magnitude, the "closer" the layer reads.
+  const iconRotateY    = useTransform(smx, [-1, 1], [-18, 18]);
+  const iconRotateX    = useTransform(smy, [-1, 1], [12, -12]);
   const iconTranslateX = useTransform(smx, [-1, 1], [-14, 14]);
   const iconTranslateY = useTransform(smy, [-1, 1], [-10, 10]);
+
+  // Aurora layer — drifts opposite (deep)
   const auroraX = useTransform(smx, [-1, 1], [40, -40]);
   const auroraY = useTransform(smy, [-1, 1], [30, -30]);
+
+  // Dot grid — drifts opposite, smaller magnitude (deepest)
+  const gridX = useTransform(smx, [-1, 1], [22, -22]);
+  const gridY = useTransform(smy, [-1, 1], [16, -16]);
+
+  // Four background orbs — each with a unique direction + magnitude so they
+  // read as four different depth planes drifting independently.
+  const orb1X = useTransform(smx, [-1, 1], [-70, 70]);
+  const orb1Y = useTransform(smy, [-1, 1], [-50, 50]);
+  const orb2X = useTransform(smx, [-1, 1], [55, -55]);
+  const orb2Y = useTransform(smy, [-1, 1], [-40, 40]);
+  const orb3X = useTransform(smx, [-1, 1], [-45, 45]);
+  const orb3Y = useTransform(smy, [-1, 1], [35, -35]);
+  const orb4X = useTransform(smx, [-1, 1], [35, -35]);
+  const orb4Y = useTransform(smy, [-1, 1], [25, -25]);
 
   // Click-to-pulse state for the icon frame.
   const [pulseKey, setPulseKey] = useState(0);
@@ -69,7 +88,68 @@ export default function NotFound() {
 
   return (
     <main className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden select-none">
-      {/* Aurora — parallax-shifted in the opposite direction for depth */}
+      {/* ─────────────────────────────────────────────────────────────────────
+          BACKGROUND PARALLAX STACK (deepest first)
+          Each layer parallaxes with a different magnitude + direction so the
+          page reads as a real 3D space rather than a flat panel.
+         ─────────────────────────────────────────────────────────────────── */}
+
+      {/* 1. Static base — fixed dark layer, never moves. Anchors the eye. */}
+      <div aria-hidden className="absolute inset-0 -z-30 bg-background" />
+
+      {/* 2. Four colored orbs — heaviest parallax, largest depth offset.
+            Positioned at the four corners so the eye reads them as ambient
+            light leaking from off-screen. Heavy blur makes them feel like
+            light, not graphics. */}
+      <div aria-hidden className="absolute inset-0 -z-20 overflow-hidden">
+        <motion.div
+          style={{ x: orb1X, y: orb1Y }}
+          className="absolute -left-32 -top-32 h-[520px] w-[520px] rounded-full"
+        >
+          <div
+            className="absolute inset-0 rounded-full blur-3xl opacity-60"
+            style={{ backgroundColor: "hsl(var(--brand-pink) / 0.35)" }}
+          />
+        </motion.div>
+        <motion.div
+          style={{ x: orb2X, y: orb2Y }}
+          className="absolute -right-40 -top-24 h-[460px] w-[460px] rounded-full"
+        >
+          <div
+            className="absolute inset-0 rounded-full blur-3xl opacity-50"
+            style={{ backgroundColor: "hsl(var(--brand-blue) / 0.35)" }}
+          />
+        </motion.div>
+        <motion.div
+          style={{ x: orb3X, y: orb3Y }}
+          className="absolute -left-24 -bottom-32 h-[480px] w-[480px] rounded-full"
+        >
+          <div
+            className="absolute inset-0 rounded-full blur-3xl opacity-55"
+            style={{ backgroundColor: "hsl(var(--brand-purple) / 0.40)" }}
+          />
+        </motion.div>
+        <motion.div
+          style={{ x: orb4X, y: orb4Y }}
+          className="absolute -right-32 -bottom-40 h-[440px] w-[440px] rounded-full"
+        >
+          <div
+            className="absolute inset-0 rounded-full blur-3xl opacity-50"
+            style={{ backgroundColor: "hsl(var(--brand-pink) / 0.30)" }}
+          />
+        </motion.div>
+      </div>
+
+      {/* 3. Dot grid — parallaxes opposite the cursor. Most subtle, gives the
+            background a sense of structure (like graph paper drifting). */}
+      <motion.div
+        aria-hidden
+        style={{ x: gridX, y: gridY }}
+        className="absolute -inset-10 -z-10 bg-dot-grid mask-radial opacity-25"
+      />
+
+      {/* 4. Large slow aurora — rotates + parallaxes opposite. Wraps the icon
+            in a colored haze. */}
       <motion.div
         aria-hidden
         style={{ x: auroraX, y: auroraY }}
@@ -77,10 +157,11 @@ export default function NotFound() {
       >
         <div className="aurora h-[900px] w-[900px] animate-aurora-rotate opacity-60" />
       </motion.div>
+
+      {/* 5. Inner pulsing aurora — beats with the halo behind the icon. */}
       <div aria-hidden className="absolute inset-0 -z-10 flex items-center justify-center">
         <div className="aurora h-[560px] w-[560px] animate-halo-pulse opacity-80" />
       </div>
-      <div aria-hidden className="absolute inset-0 -z-10 bg-dot-grid mask-radial opacity-30" />
 
       {/* Floating particles — independent drifts + light cursor influence */}
       <ParticleField mx={smx} my={smy} />
@@ -201,7 +282,7 @@ export default function NotFound() {
         transition={{ duration: 0.5, delay: 0.3 }}
         className="mt-3 text-[13px] text-muted-foreground max-w-sm leading-relaxed"
       >
-        The page you're looking for has moved or doesn't exist. Try clicking the icon — or head back somewhere useful.
+        The page you're looking for has moved or doesn't exist. Let's get you back somewhere useful.
       </motion.p>
 
       <motion.div
@@ -228,15 +309,6 @@ export default function NotFound() {
         </MagneticButton>
       </motion.div>
 
-      {/* Tiny hint */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.6 }}
-        transition={{ duration: 0.6, delay: 1.4 }}
-        className="mt-10 text-[11px] tracking-[0.18em] uppercase text-muted-foreground"
-      >
-        Try moving your cursor · or clicking the icon
-      </motion.div>
     </main>
   );
 }

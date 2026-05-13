@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Sidebar } from "./sidebar";
 import { Topbar } from "./topbar";
 import { CommandPalette } from "./command-palette";
@@ -20,20 +21,32 @@ export function DashboardShell({
   plan: PlanTier;
   dmsThisMonth: number;
 }) {
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [paletteOpen, setPaletteOpen] = useState(false);
 
-  // Cmd/Ctrl+K to open the palette
+  // Global keyboard shortcuts for the dashboard:
+  //   Cmd/Ctrl + K  → toggle command palette
+  //   ?             → open help page (when not typing in an input)
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
         setPaletteOpen((v) => !v);
+        return;
+      }
+      // "?" — only when the user isn't typing in a field
+      if (e.key === "?" && !e.metaKey && !e.ctrlKey) {
+        const tag = (e.target as HTMLElement | null)?.tagName;
+        const editable = (e.target as HTMLElement | null)?.isContentEditable;
+        if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || editable) return;
+        e.preventDefault();
+        router.push("/dashboard/help");
       }
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, []);
+  }, [router]);
 
   return (
     <div className="min-h-screen bg-background">

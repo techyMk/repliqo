@@ -11,6 +11,7 @@ import {
   PlugZap,
   Instagram,
   Plus,
+  HelpCircle,
 } from "lucide-react";
 import { Logo, LogoMark } from "@/components/brand/logo";
 import { cn, formatCompact } from "@/lib/utils";
@@ -27,6 +28,7 @@ const nav = [
 const settingsNav = [
   { label: "Accounts", href: "/dashboard/accounts", icon: PlugZap },
   { label: "Settings", href: "/dashboard/settings", icon: Settings },
+  { label: "Help & docs", href: "/dashboard/help", icon: HelpCircle },
 ];
 
 export function Sidebar({

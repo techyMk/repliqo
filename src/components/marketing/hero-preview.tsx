@@ -11,7 +11,7 @@ import { Logo } from "@/components/brand/logo";
 //
 // Assets:
 //   /public/avatars/techymk.webp    — creator avatar (post header, 256×256 ideal)
-//   /public/posts/the-drop.webp     — the post image (1080×1350 ideal, 4:5 ratio)
+//   /public/posts/drop.webp         — the post image (1080×1350 ideal, 4:5 ratio)
 // The post image gracefully falls back to a gradient + caption if the file is
 // missing, so the demo never breaks visually while you're swapping assets.
 const CREATOR_HANDLE = "techymk.dev";
@@ -85,7 +85,7 @@ function PostPanel() {
         <div className="aspect-[4/5] relative overflow-hidden bg-gradient-to-br from-zinc-800 via-zinc-900 to-black flex items-center justify-center">
           {!imgFailed && (
             <img
-              src="/posts/the-drop.webp"
+              src="/posts/drop.webp"
               alt="The Drop"
               onError={() => setImgFailed(true)}
               className="absolute inset-0 w-full h-full object-cover"

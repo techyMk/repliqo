@@ -20,7 +20,7 @@ const tasks = [
   // Profile avatars — cap at 512 since we render at most 64px (retina = 128px)
   { src: "public/avatars/techymk.png", maxEdge: 512, deleteSource: true },
   // Post images — Instagram 4:5 portrait standard
-  { src: "public/posts/the-drop.png", maxEdge: 1080 },
+  { src: "public/posts/drop.png", maxEdge: 1080, deleteSource: true },
 ];
 
 for (const t of tasks) {
